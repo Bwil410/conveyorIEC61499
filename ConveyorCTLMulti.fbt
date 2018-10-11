@@ -23,6 +23,13 @@
       </Event>
       <Event Name="CAS_START" >
       </Event>
+      <Event Name="MultiIn" Comment="Multicast Input Event" >
+        <With Var="PE" />
+        <With Var="Block" />
+        <With Var="Candidate" />
+        <With Var="MultiIDIn" />
+        <With Var="MultiTimeIn" />
+      </Event>
     </EventInputs>
     <EventOutputs>
       <Event Name="INITO" Comment="Initialization Confirm" >
@@ -37,15 +44,25 @@
       </Event>
       <Event Name="START" >
       </Event>
+      <Event Name="MultiOut" Comment="Multicast Output Event" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
+        <With Var="MultiIDOut" />
+        <With Var="MultiTimeOut" />
+      </Event>
     </EventOutputs>
     <InputVars>
       <VarDeclaration Name="PE" Type="BOOL" Comment="Input event qualifier" />
       <VarDeclaration Name="Block" Type="BOOL" />
       <VarDeclaration Name="Candidate" Type="BOOL" />
+      <VarDeclaration Name="MultiIDIn" Type="INT" />
+      <VarDeclaration Name="MultiTimeIn" Type="INT" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="MotoRotate" Type="BOOL" Comment="Output event qualifier" />
       <VarDeclaration Name="BlockCon" Type="BOOL" />
+      <VarDeclaration Name="MultiIDOut" Type="INT" />
+      <VarDeclaration Name="MultiTimeOut" Type="INT" />
     </OutputVars>
   </InterfaceList>
   <BasicFB>

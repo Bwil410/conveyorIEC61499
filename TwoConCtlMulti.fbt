@@ -5,7 +5,7 @@
   <VersionInfo Organization="Rockwell Automation" Version="0.2" Author="JHC" Date="2003-12-05" Remarks="Renamed from NEWCOMPFB." />
   <VersionInfo Organization="Rockwell Automation" Version="0.1" Author="JHC" Date="2002-01-08" Remarks="Added DLY FB as example." />
   <VersionInfo Organization="Rockwell Automation" Version="0.0" Author="JHC" Date="2000-05-27" />
-  <CompilerInfo header="package fb.rt.cs725;" >
+  <CompilerInfo header="package fb.rt.conveyorIEC61499;" >
   </CompilerInfo>
   <InterfaceList>
     <EventInputs>
@@ -24,6 +24,13 @@
       <Event Name="STOP" >
         <With Var="Block" />
       </Event>
+      <Event Name="MultiIn" Comment="Multicast Input Event" >
+        <With Var="Candidate" />
+        <With Var="Block" />
+        <With Var="PE" />
+        <With Var="MultiIDIn" />
+        <With Var="MultiTimeIn" />
+      </Event>
     </EventInputs>
     <EventOutputs>
       <Event Name="INITO" Comment="Initialization Confirm" >
@@ -36,16 +43,27 @@
         <With Var="MotoRotate2" />
         <With Var="BlockCon" />
       </Event>
+      <Event Name="MultiOut" Comment="Multicast Output Event" >
+        <With Var="MultiIDOut" />
+        <With Var="MotoRotate1" />
+        <With Var="MotoRotate2" />
+        <With Var="BlockCon" />
+        <With Var="MultiTimeOut" />
+      </Event>
     </EventOutputs>
     <InputVars>
       <VarDeclaration Name="Candidate" Type="BOOL" />
       <VarDeclaration Name="Block" Type="BOOL" />
       <VarDeclaration Name="PE" Type="BOOL" />
+      <VarDeclaration Name="MultiIDIn" Type="INT" />
+      <VarDeclaration Name="MultiTimeIn" Type="INT" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="MotoRotate1" Type="BOOL" />
       <VarDeclaration Name="MotoRotate2" Type="BOOL" />
       <VarDeclaration Name="BlockCon" Type="BOOL" />
+      <VarDeclaration Name="MultiIDOut" Type="INT" />
+      <VarDeclaration Name="MultiTimeOut" Type="INT" />
     </OutputVars>
   </InterfaceList>
   <FBNetwork >
@@ -58,22 +76,28 @@
     <EventConnections>
       <Connection Source="INIT" Destination="FC11.INIT" dx1="222.22221" />
       <Connection Source="REQ" Destination="FC11.REQ" dx1="216.66666" />
-      <Connection Source="FC12.INITO" Destination="INITO" dx1="2600.0" />
-      <Connection Source="FC12.CNF" Destination="CNF" dx1="2577.7776" />
+      <Connection Source="FC12.INITO" Destination="INITO" dx1="2666.6665" />
+      <Connection Source="FC12.CNF" Destination="CNF" dx1="2644.4443" />
       <Connection Source="REQ" Destination="FC12.REQ" dx1="1777.7777" />
       <Connection Source="STOP" Destination="FC12.CAS_STOP" dx1="1761.1111" />
       <Connection Source="START" Destination="FC12.CAS_START" dx1="1744.4443" />
       <Connection Source="FC12.STOP" Destination="FC11.CAS_STOP" dx1="100.0" dx2="100.0" dy="-444.44443" />
       <Connection Source="FC12.START" Destination="FC11.CAS_START" dx1="127.77777" dx2="127.77777" dy="-605.55554" />
       <Connection Source="FC11.INITO" Destination="FC12.INIT" dx1="138.88889" />
+      <Connection Source="MultiIn" Destination="FC12.MultiIn" dx1="1744.4443" />
+      <Connection Source="FC12.MultiOut" Destination="MultiOut" dx1="2700.0" />
     </EventConnections>
     <DataConnections>
       <Connection Source="Block" Destination="FC12.Block" dx1="1766.6666" />
       <Connection Source="Candidate" Destination="FC12.Candidate" dx1="1699.9999" />
       <Connection Source="PE" Destination="FC12.PE" dx1="1799.9999" />
-      <Connection Source="FC12.BlockCon" Destination="BlockCon" dx1="2644.4443" />
-      <Connection Source="FC11.MotoRotate" Destination="MotoRotate1" dx1="1127.7777" />
-      <Connection Source="FC12.MotoRotate" Destination="MotoRotate2" dx1="2688.8887" />
+      <Connection Source="FC12.BlockCon" Destination="BlockCon" dx1="2711.111" />
+      <Connection Source="FC11.MotoRotate" Destination="MotoRotate1" dx1="1194.4445" />
+      <Connection Source="FC12.MotoRotate" Destination="MotoRotate2" dx1="2755.5554" />
+      <Connection Source="MultiIDIn" Destination="FC12.MultiIDIn" dx1="1716.6666" />
+      <Connection Source="MultiTimeIn" Destination="FC12.MultiTimeIn" dx1="1677.7777" />
+      <Connection Source="FC12.MultiIDOut" Destination="MultiIDOut" dx1="2727.7776" />
+      <Connection Source="FC12.MultiTimeOut" Destination="MultiTimeOut" dx1="2772.2222" />
     </DataConnections>
   </FBNetwork>
 </FBType>
