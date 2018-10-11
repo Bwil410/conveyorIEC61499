@@ -213,7 +213,6 @@
         <FB Name="FCFour" Type="TwoConCtlMulti" x="3211.111" y="1533.3333" >
           <Parameter Name="Candidate" Value="0" />
           <Parameter Name="Block" Value="0" />
-          <Parameter Name="PE" Value="0" />
         </FB>
         <EventConnections>
           <Connection Source="START.COLD" Destination="BagInOne.INIT" dx1="27.777777" dx2="20.0" dy="-60.0" />
@@ -276,6 +275,8 @@
           <Connection Source="FCFour.MultiTimeOut" Destination="TCOne.MultiTimeIn" dx1="150.0" />
           <Connection Source="TCOne.MultiIDOut" Destination="FCFour.MultiIDIn" dx1="211.1111" dx2="188.88889" dy="283.3333" />
           <Connection Source="TCOne.MultiTimeOut" Destination="FCFour.MultiTimeIn" dx1="27.777777" dx2="61.111107" dy="116.666664" />
+          <Connection Source="PE.RD_4" Destination="FCFour.PE" dx1="588.88885" />
+          <Connection Source="PE.RD_6" Destination="TCOne.PE2" dx1="966.6666" />
         </DataConnections>
       </FBNetwork>
     </Resource>

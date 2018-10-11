@@ -67,7 +67,7 @@
     </OutputVars>
   </InterfaceList>
   <FBNetwork >
-    <FB Name="FC11" Type="ConveyorCTLMulti" x="327.77777" y="449.99997" >
+    <FB Name="FC11" Type="ConveyorCTL" x="327.77777" y="449.99997" >
       <Parameter Name="PE" Value="0" />
       <Parameter Name="Block" Value="0" />
       <Parameter Name="Candidate" Value="0" />

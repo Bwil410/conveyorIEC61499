@@ -13,11 +13,13 @@
         <With Var="Candidate" />
         <With Var="Block" />
         <With Var="PE" />
+        <With Var="PE2" />
       </Event>
       <Event Name="REQ" Comment="Normal Execution Request" >
         <With Var="Block" />
         <With Var="Candidate" />
         <With Var="PE" />
+        <With Var="PE2" />
       </Event>
       <Event Name="MultiIn" >
         <With Var="Candidate" />
@@ -25,6 +27,7 @@
         <With Var="PE" />
         <With Var="MultiIDIn" />
         <With Var="MultiTimeIn" />
+        <With Var="PE2" />
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -57,6 +60,7 @@
       <VarDeclaration Name="PE" Type="BOOL" />
       <VarDeclaration Name="MultiIDIn" Type="INT" />
       <VarDeclaration Name="MultiTimeIn" Type="INT" />
+      <VarDeclaration Name="PE2" Type="BOOL" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="MotoRotate1" Type="BOOL" />
@@ -75,7 +79,6 @@
       <Parameter Name="Candidate" Value="0" />
     </FB>
     <FB Name="FC12New" Type="ConveyorCTLMulti" x="1666.6666" y="1050.0" >
-      <Parameter Name="PE" Value="0" />
       <Parameter Name="Block" Value="0" />
       <Parameter Name="Candidate" Value="0" />
     </FB>
@@ -107,6 +110,7 @@
       <Connection Source="MultiTimeIn" Destination="FC12New.MultiTimeIn" dx1="1455.5555" />
       <Connection Source="FC12New.MultiIDOut" Destination="MultiIDOut" dx1="2505.5554" />
       <Connection Source="FC12New.MultiTimeOut" Destination="MultiTimeOut" dx1="2550.0" />
+      <Connection Source="PE2" Destination="FC12New.PE" dx1="1561.1111" />
     </DataConnections>
   </FBNetwork>
 </FBType>
