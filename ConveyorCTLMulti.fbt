@@ -75,6 +75,7 @@
     <ECC >
       <ECState Name="START" Comment="Initial State" x="916.6666" y="750.0" >
         <ECAction Algorithm="START" Output="START" />
+        <ECAction Output="CNF" />
       </ECState>
       <ECState Name="INIT" Comment="Initialization" x="922.22217" y="138.88889" >
         <ECAction Algorithm="INIT" Output="INITO" />
@@ -83,8 +84,11 @@
       <ECState Name="WANTED" x="911.1111" y="1277.7777" >
         <ECAction Algorithm="STOP" Output="STOP" />
         <ECAction Algorithm="REQUEST" Output="MultiOut" />
+        <ECAction Output="CNF" />
       </ECState>
       <ECState Name="HELD" x="899.99994" y="1705.5555" >
+        <ECAction Algorithm="START" Output="START" />
+        <ECAction Output="CNF" />
       </ECState>
       <ECState Name="SEND" x="2405.5554" y="766.6666" >
         <ECAction Algorithm="REPLY" Output="MultiOut" />
@@ -99,24 +103,26 @@
         <ECAction Algorithm="REPLY" Output="MultiOut" />
       </ECState>
       <ECState Name="HELD2" x="2994.4443" y="2166.6665" >
+        <ECAction Algorithm="START" Output="START" />
+        <ECAction Output="CNF" />
       </ECState>
       <ECState Name="WANTED2" x="2988.8887" y="1688.8888" >
       </ECState>
       <ECTransition Source="START" Destination="INIT" Condition="INIT" x="1177.7777" y="449.99997" />
       <ECTransition Source="INIT" Destination="START" Condition="1" x="916.6666" y="461.11108" />
-      <ECTransition Source="START" Destination="WANTED" Condition="REQ&#38;PE" x="916.6666" y="949.99994" />
+      <ECTransition Source="START" Destination="WANTED" Condition="REQ&#38;!PE" x="916.6666" y="949.99994" />
       <ECTransition Source="WANTED" Destination="HELD" Condition="MultiIn&#38;MultiIDIn=100" x="899.99994" y="1533.3333" />
-      <ECTransition Source="HELD" Destination="START" Condition="REQ&#38;!PE" x="377.77777" y="1105.5555" />
+      <ECTransition Source="HELD" Destination="START" Condition="REQ&#38;PE" x="377.77777" y="1105.5555" />
       <ECTransition Source="START" Destination="SEND" Condition="MultiIn&#38;MultiIDIn&#60;100" x="1744.4443" y="933.3333" />
       <ECTransition Source="SEND" Destination="START" Condition="1" x="1705.5555" y="538.88885" />
       <ECTransition Source="WANTED" Destination="COMPARE" Condition="MultiIn&#38;MultiIDIn&#60;100" x="1744.4443" y="1033.3333" />
       <ECTransition Source="SEND2" Destination="WANTED" Condition="1" x="1388.8888" y="1666.6666" />
       <ECTransition Source="SEND3" Destination="START" Condition="1" x="94.44444" y="1038.8888" />
-      <ECTransition Source="HELD2" Destination="SEND3" Condition="REQ&#38;!PE" x="1433.3333" y="2361.111" />
+      <ECTransition Source="HELD2" Destination="SEND3" Condition="REQ&#38;PE" x="1433.3333" y="2361.111" />
       <ECTransition Source="WANTED2" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn=100" x="2994.4443" y="1944.4443" />
       <ECTransition Source="COMPARE" Destination="WANTED2" Condition="compareVal" x="2805.5554" y="1555.5555" />
       <ECTransition Source="COMPARE" Destination="SEND2" Condition="!compareVal" x="2055.5554" y="1561.1111" />
-      <ECTransition Source="HELD" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn&#60;100" x="2277.7776" y="2005.5554" />
+      <ECTransition Source="HELD" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn&#60;100" x="1894.4443" y="2050.0" />
     </ECC>
   <Algorithm Name="INIT" Comment="Initialization algorithm" >
     <ST Text="MotoRotate := TRUE;&#10;Block := FALSE;&#10;&#10;System.out.println(this + &#34; &#34; + MotoRotate);&#10;System.out.println(MotoRotate);&#10;" />
@@ -134,7 +140,7 @@
     <Other Language="Java" Text="System.out.println(&#34;REPLY&#34;);&#10;&#10;MultiIDOut.value = 100;&#10;" />
   </Algorithm>
   <Algorithm Name="REQUEST" >
-    <Other Language="Java" Text="System.out.println(&#34;REQUEST&#34;);&#10;&#10;MultiIDOut.value = 1;&#10;MultiTimeOut.value = lamportClock.value;&#10;" />
+    <Other Language="Java" Text="System.out.println(this + &#34;REQUEST&#34;);&#10;&#10;MultiIDOut.value = 1;&#10;MultiTimeOut.value = lamportClock.value;&#10;" />
   </Algorithm>
   <Algorithm Name="COMPARISON" >
     <Other Language="Java" Text="System.out.println(&#34;COMPARE&#34;);&#10;&#10;if (lamportClock.value > MultiTimeIn.value) {&#10;compareVal.value = false;&#10;} else {&#10;compareVal.value = true;&#10;}&#10;" />

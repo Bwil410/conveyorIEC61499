@@ -90,14 +90,14 @@
     <DataConnections>
       <Connection Source="Block" Destination="FC12.Block" dx1="1766.6666" />
       <Connection Source="Candidate" Destination="FC12.Candidate" dx1="1699.9999" />
-      <Connection Source="PE" Destination="FC12.PE" dx1="1799.9999" />
       <Connection Source="FC12.BlockCon" Destination="BlockCon" dx1="2711.111" />
-      <Connection Source="FC11.MotoRotate" Destination="MotoRotate1" dx1="1194.4445" />
+      <Connection Source="FC11.MotoRotate" Destination="MotoRotate1" dx1="1127.7777" />
       <Connection Source="FC12.MotoRotate" Destination="MotoRotate2" dx1="2755.5554" />
       <Connection Source="MultiIDIn" Destination="FC12.MultiIDIn" dx1="1716.6666" />
       <Connection Source="MultiTimeIn" Destination="FC12.MultiTimeIn" dx1="1677.7777" />
       <Connection Source="FC12.MultiIDOut" Destination="MultiIDOut" dx1="2727.7776" />
       <Connection Source="FC12.MultiTimeOut" Destination="MultiTimeOut" dx1="2772.2222" />
+      <Connection Source="PE" Destination="FC12.PE" dx1="1799.9999" />
     </DataConnections>
   </FBNetwork>
 </FBType>
