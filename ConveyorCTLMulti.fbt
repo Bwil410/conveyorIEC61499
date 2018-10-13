@@ -73,56 +73,58 @@
       <VarDeclaration Name="lamportClock" Type="INT" InitialValue="0" />
     </InternalVars>
     <ECC >
-      <ECState Name="START" Comment="Initial State" x="916.6666" y="750.0" >
+      <ECState Name="START" Comment="Initial State" x="3566.6665" y="1005.55554" >
         <ECAction Algorithm="START" Output="START" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="INIT" Comment="Initialization" x="922.22217" y="138.88889" >
+      <ECState Name="INIT" Comment="Initialization" x="3566.6665" y="216.66666" >
         <ECAction Algorithm="INIT" Output="INITO" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="WANTED" x="911.1111" y="1277.7777" >
+      <ECState Name="WANTED" x="3566.6665" y="1827.7777" >
         <ECAction Algorithm="STOP" Output="STOP" />
         <ECAction Algorithm="REQUEST" Output="MultiOut" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="HELD" x="899.99994" y="1705.5555" >
+      <ECState Name="HELD" x="3566.6665" y="2722.2222" >
         <ECAction Algorithm="START" Output="START" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="SEND" x="2405.5554" y="766.6666" >
+      <ECState Name="SEND" x="5933.333" y="955.55554" >
         <ECAction Algorithm="REPLY" Output="MultiOut" />
+        <ECAction Algorithm="UPDATE" />
       </ECState>
-      <ECState Name="COMPARE" x="2461.111" y="1305.5555" >
+      <ECState Name="COMPARE" x="5894.4443" y="1383.3333" >
         <ECAction Algorithm="COMPARISON" />
       </ECState>
-      <ECState Name="SEND2" x="1849.9999" y="1699.9999" >
+      <ECState Name="SEND2" x="5294.4443" y="1794.4443" >
         <ECAction Algorithm="REPLY" Output="MultiOut" />
       </ECState>
-      <ECState Name="SEND3" x="755.55554" y="2094.4443" >
+      <ECState Name="SEND3" x="3605.5554" y="3677.7776" >
         <ECAction Algorithm="REPLY" Output="MultiOut" />
       </ECState>
-      <ECState Name="HELD2" x="2994.4443" y="2166.6665" >
+      <ECState Name="HELD2" x="6427.7773" y="2688.8887" >
         <ECAction Algorithm="START" Output="START" />
         <ECAction Output="CNF" />
+        <ECAction Algorithm="UPDATE" />
       </ECState>
-      <ECState Name="WANTED2" x="2988.8887" y="1688.8888" >
+      <ECState Name="WANTED2" x="6427.7773" y="1794.4443" >
       </ECState>
-      <ECTransition Source="START" Destination="INIT" Condition="INIT" x="1177.7777" y="449.99997" />
-      <ECTransition Source="INIT" Destination="START" Condition="1" x="916.6666" y="461.11108" />
-      <ECTransition Source="START" Destination="WANTED" Condition="REQ&#38;!PE" x="916.6666" y="949.99994" />
-      <ECTransition Source="WANTED" Destination="HELD" Condition="MultiIn&#38;MultiIDIn=100" x="899.99994" y="1533.3333" />
-      <ECTransition Source="HELD" Destination="START" Condition="REQ&#38;PE" x="377.77777" y="1105.5555" />
-      <ECTransition Source="START" Destination="SEND" Condition="MultiIn&#38;MultiIDIn&#60;100" x="1744.4443" y="933.3333" />
-      <ECTransition Source="SEND" Destination="START" Condition="1" x="1705.5555" y="538.88885" />
-      <ECTransition Source="WANTED" Destination="COMPARE" Condition="MultiIn&#38;MultiIDIn&#60;100" x="1744.4443" y="1033.3333" />
-      <ECTransition Source="SEND2" Destination="WANTED" Condition="1" x="1388.8888" y="1666.6666" />
-      <ECTransition Source="SEND3" Destination="START" Condition="1" x="94.44444" y="1038.8888" />
-      <ECTransition Source="HELD2" Destination="SEND3" Condition="REQ&#38;PE" x="1433.3333" y="2361.111" />
-      <ECTransition Source="WANTED2" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn=100" x="2994.4443" y="1944.4443" />
-      <ECTransition Source="COMPARE" Destination="WANTED2" Condition="compareVal" x="2805.5554" y="1555.5555" />
-      <ECTransition Source="COMPARE" Destination="SEND2" Condition="!compareVal" x="2055.5554" y="1561.1111" />
-      <ECTransition Source="HELD" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn&#60;100" x="1894.4443" y="2050.0" />
+      <ECTransition Source="START" Destination="INIT" Condition="INIT" x="3566.6665" y="733.3333" />
+      <ECTransition Source="INIT" Destination="START" Condition="1" x="3233.3333" y="666.6666" />
+      <ECTransition Source="START" Destination="WANTED" Condition="REQ&#38;!PE" x="3566.6665" y="1444.4443" />
+      <ECTransition Source="WANTED" Destination="HELD" Condition="MultiIn&#38;MultiIDIn=100" x="3566.6665" y="2283.3333" />
+      <ECTransition Source="HELD" Destination="START" Condition="REQ&#38;PE" x="2916.6665" y="1922.2222" />
+      <ECTransition Source="START" Destination="SEND" Condition="MultiIn&#38;MultiIDIn&#60;100" x="4255.555" y="655.55554" />
+      <ECTransition Source="SEND" Destination="START" Condition="1" x="3855.5554" y="1250.0" />
+      <ECTransition Source="WANTED" Destination="COMPARE" Condition="MultiIn&#38;MultiIDIn&#60;100" x="4011.1108" y="1383.3333" />
+      <ECTransition Source="SEND2" Destination="WANTED" Condition="1" x="4038.8887" y="2166.6665" />
+      <ECTransition Source="SEND3" Destination="START" Condition="1" x="2588.8887" y="1888.8888" />
+      <ECTransition Source="HELD2" Destination="SEND3" Condition="REQ&#38;PE" x="4522.222" y="3316.6665" />
+      <ECTransition Source="WANTED2" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn=100" x="6427.7773" y="2144.4443" />
+      <ECTransition Source="COMPARE" Destination="WANTED2" Condition="compareVal" x="6427.7773" y="1572.2222" />
+      <ECTransition Source="COMPARE" Destination="SEND2" Condition="!compareVal" x="5294.4443" y="1566.6666" />
+      <ECTransition Source="HELD" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn&#60;100" x="4055.5554" y="3116.6665" />
     </ECC>
   <Algorithm Name="INIT" Comment="Initialization algorithm" >
     <ST Text="MotoRotate := TRUE;&#10;Block := FALSE;&#10;&#10;System.out.println(this + &#34; &#34; + MotoRotate);&#10;System.out.println(MotoRotate);&#10;" />
@@ -143,7 +145,10 @@
     <Other Language="Java" Text="System.out.println(this + &#34;REQUEST&#34;);&#10;&#10;MultiIDOut.value = 1;&#10;MultiTimeOut.value = lamportClock.value;&#10;" />
   </Algorithm>
   <Algorithm Name="COMPARISON" >
-    <Other Language="Java" Text="System.out.println(&#34;COMPARE&#34;);&#10;&#10;if (lamportClock.value > MultiTimeIn.value) {&#10;compareVal.value = false;&#10;} else {&#10;compareVal.value = true;&#10;}&#10;" />
+    <Other Language="Java" Text="System.out.println(&#34;COMPARE&#34;);&#10;&#10;if (lamportClock.value > MultiTimeIn.value) {&#10;compareVal.value = false;&#10;} else {&#10;compareVal.value = true;&#10;}&#10;&#10;lamportClock.value = MultiTimeIn.value;&#10;" />
+  </Algorithm>
+  <Algorithm Name="UPDATE" >
+    <Other Language="Java" Text="lamportClock.value = MultiTimeIn.value;&#10;" />
   </Algorithm>
   </BasicFB>
 </FBType>
