@@ -145,10 +145,10 @@
     <Other Language="Java" Text="System.out.println(this + &#34;REQUEST&#34;);&#10;&#10;MultiIDOut.value = 1;&#10;MultiTimeOut.value = lamportClock.value;&#10;" />
   </Algorithm>
   <Algorithm Name="COMPARISON" >
-    <Other Language="Java" Text="System.out.println(&#34;COMPARE&#34;);&#10;&#10;if (lamportClock.value > MultiTimeIn.value) {&#10;compareVal.value = false;&#10;} else {&#10;compareVal.value = true;&#10;}&#10;&#10;lamportClock.value = MultiTimeIn.value;&#10;" />
+    <Other Language="Java" Text="System.out.println(&#34;COMPARE&#34;);&#10;&#10;if (lamportClock.value > MultiTimeIn.value) {&#10;compareVal.value = false;&#10;} else {&#10;compareVal.value = true;&#10;lamportClock.value = MultiTimeIn.value;&#10;}&#10;" />
   </Algorithm>
   <Algorithm Name="UPDATE" >
-    <Other Language="Java" Text="lamportClock.value = MultiTimeIn.value;&#10;" />
+    <Other Language="Java" Text="if (lamportClock.value > MultiTimeIn.value) {&#10;&#10;} else {&#10;lamportClock.value = MultiTimeIn.value;&#10;}&#10;" />
   </Algorithm>
   </BasicFB>
 </FBType>
