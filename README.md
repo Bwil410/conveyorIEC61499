@@ -3,12 +3,12 @@
 ## Usage
 1. Run FBDK using editor.bat
 2. Accept the User Agreement
-3. Open BaggageSystemCtl from the conveyorIEC61499 folder in the src directory
+3. Open BaggageSystemCTL from the conveyorIEC61499 folder in the src directory
 
-4. Open, Parse, and Compile ConveyorCtl, ConveyorCtlMulti, ConveyorCtlRing, ConveyorCtlCentral from the conveyorIEC61499 folder
-5. Open, Parse and Compile TwoConCtlMulti, TwoConCtlRing, TwoConCtlCentral, CentralServer, ThreeConCtl from the conveyorIEC61499 folder
-6. Parse BaggageSystemCtl
-7. Press Run in the top bar of BaggageSystemCtl
+4. Open, Parse, and Compile ConveyorCTL, ConveyorCTLMulti, ConveyorCTLRing, ConveyorCTLCentral from the conveyorIEC61499 folder
+5. Open, Parse, and Compile TwoConCtlMulti, TwoConCtlRing, TwoConCtlCentral, CentralServer, ThreeConCtl from the conveyorIEC61499 folder
+6. Parse BaggageSystemCTL
+7. Press Run in the top bar of BaggageSystemCTL
 
 ## Notes
 * Once you run the program, to run it again you have to restart the fbdk editor
