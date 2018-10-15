@@ -1,21 +1,20 @@
-# conveyor-IEC61499
+# COMPSYS 725 Assignment 2 Implementation #
 
 ## Usage
-1. Run editor.bat in the fbdk directory
-2. Open BaggageSystemCTL in the project repository
-3. Press the RUN button
+1. Run FBDK using editor.bat
+2. Accept the User Agreement
+3. Open BaggageSystemCtl from the conveyorIEC61499 folder in the src directory
 
+4. Open, Parse, and Compile ConveyorCtl, ConveyorCtlMulti, ConveyorCtlRing, ConveyorCtlCentral from the conveyorIEC61499 folder
+5. Open, Parse and Compile TwoConCtlMulti, TwoConCtlRing, TwoConCtlCentral, CentralServer, ThreeConCtl from the conveyorIEC61499 folder
+6. Parse BaggageSystemCtl
+7. Press Run in the top bar of BaggageSystemCtl
 
 ## Notes
 * Once you run the program, to run it again you have to restart the fbdk editor
-* FCOne, FCTwo, FCThree, FCFour are the controllers for the four input branches. TwoConCtl =  "Two Conveyor Controller"
-* TCOne is the controller for the horizontal branch. ThreeConCtl = "Three Conveyor Controller"
-
-* For Central Server, a function block must be designed that acts as a server to control an intersection
-* For multicast and ring token, the exisiting controller function blocks should communicate with one another to control an intersection
 
 ## Implementation Details
-* Adil: Central Server, Intersection #1 (FCThree * TCOne)
+* Adil: Central Server, Intersection #1 (FCOne & FCThree)
 * Sylvain: Ring Token, Intersection #2 (FCTwo & TCOne)
 * Mark: Multicast, Intersection #3 (FCFour & TCOne)
 
