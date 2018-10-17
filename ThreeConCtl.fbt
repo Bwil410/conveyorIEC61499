@@ -34,9 +34,6 @@
       </Event>
       <Event Name="TokenUpdateIN" >
         <With Var="TokenIN" />
-      </Event>
-      <Event Name="TokenUpdateIN" >
-        <With Var="TokenIN" />
         <With Var="PE13" />
         <With Var="Candidate" />
         <With Var="Block" />
