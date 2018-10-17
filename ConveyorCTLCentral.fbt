@@ -75,6 +75,7 @@
         <ECAction Algorithm="STOP" Output="STOP" />
         <ECAction Output="CNF" />
         <ECAction Output="RequestToken" />
+        <ECAction Algorithm="WANT_TEST" />
       </ECState>
       <ECState Name="Received" x="1216.6666" y="1716.6666" >
         <ECAction Algorithm="START" Output="START" />
@@ -94,7 +95,7 @@
       </ECState>
       <ECTransition Source="IDLE" Destination="INIT" Condition="INIT" x="1200.0" y="494.44443" />
       <ECTransition Source="INIT" Destination="IDLE" Condition="1" x="1344.4443" y="666.6666" />
-      <ECTransition Source="IDLE" Destination="WANT" Condition="!PE" x="1194.4445" y="1033.3333" />
+      <ECTransition Source="IDLE" Destination="WANT" Condition="!PE" x="1194.4445" y="1038.8888" />
       <ECTransition Source="WANT" Destination="Received" Condition="TokenGranted" x="1205.5555" y="1472.2222" />
       <ECTransition Source="Received" Destination="DEPARTED_CURRENT" Condition="PE" x="1216.6666" y="1938.8888" />
       <ECTransition Source="DEPARTED_CURRENT" Destination="WAIT_NEXT" Condition="!PE" x="1216.6666" y="2416.6665" />
@@ -114,6 +115,9 @@
   </Algorithm>
   <Algorithm Name="STOP" >
     <ST Text="MotoRotate := FALSE;&#10;System.out.println(this + &#34; Stop &#34; + MotoRotate);&#10;&#10;System.out.println(&#34;Stop &#34; + MotoRotate);&#10;" />
+  </Algorithm>
+  <Algorithm Name="WANT_TEST" >
+    <Other Language="Java" Text="System.out.println(&#34;IN WANT&#34;);&#10;" />
   </Algorithm>
   </BasicFB>
 </FBType>

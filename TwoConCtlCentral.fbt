@@ -86,6 +86,7 @@
       <Connection Source="Candidate" Destination="FC12.Candidate" dx1="1799.9999" />
       <Connection Source="Block" Destination="FC12.Block" dx1="1866.6666" />
       <Connection Source="PE" Destination="FC12.PE" dx1="1899.9999" />
+      <Connection Source="PE_EXIT" Destination="FC12.PE_EXIT" dx1="1816.6666" />
     </DataConnections>
   </FBNetwork>
 </FBType>
