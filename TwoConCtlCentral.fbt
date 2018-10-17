@@ -78,6 +78,7 @@
       <Connection Source="FC12.RequestToken" Destination="RELEASE_TOKEN" dx1="3072.2222" />
       <Connection Source="FC12.RequestToken" Destination="REQUEST_TOKEN" dx1="3077.7776" />
       <Connection Source="FC12.ReleaseToken" Destination="RELEASE_TOKEN" dx1="3072.2222" />
+      <Connection Source="TOKEN_IN" Destination="FC12.TokenGranted" dx1="1794.4443" />
     </EventConnections>
     <DataConnections>
       <Connection Source="FC11.MotoRotate" Destination="MotoRotate1" dx1="1400.0" />

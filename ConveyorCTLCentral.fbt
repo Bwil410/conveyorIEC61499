@@ -38,12 +38,20 @@
         <With Var="BlockCon" />
       </Event>
       <Event Name="STOP" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
       </Event>
       <Event Name="START" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
       </Event>
       <Event Name="RequestToken" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
       </Event>
       <Event Name="ReleaseToken" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
       </Event>
     </EventOutputs>
     <InputVars>
@@ -71,13 +79,13 @@
         <ECAction Algorithm="INIT" Output="INITO" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="WANT" x="1194.4445" y="1272.2222" >
+      <ECState Name="WANT" x="1211.1111" y="1283.3333" >
         <ECAction Algorithm="STOP" Output="STOP" />
         <ECAction Output="CNF" />
         <ECAction Output="RequestToken" />
         <ECAction Algorithm="WANT_TEST" />
       </ECState>
-      <ECState Name="Received" x="1216.6666" y="1716.6666" >
+      <ECState Name="RECEIVED" x="1216.6666" y="1716.6666" >
         <ECAction Algorithm="START" Output="START" />
         <ECAction Output="CNF" />
       </ECState>
@@ -95,14 +103,14 @@
       </ECState>
       <ECTransition Source="IDLE" Destination="INIT" Condition="INIT" x="1200.0" y="494.44443" />
       <ECTransition Source="INIT" Destination="IDLE" Condition="1" x="1344.4443" y="666.6666" />
-      <ECTransition Source="IDLE" Destination="WANT" Condition="!PE" x="1194.4445" y="1038.8888" />
-      <ECTransition Source="WANT" Destination="Received" Condition="TokenGranted" x="1205.5555" y="1472.2222" />
-      <ECTransition Source="Received" Destination="DEPARTED_CURRENT" Condition="PE" x="1216.6666" y="1938.8888" />
-      <ECTransition Source="DEPARTED_CURRENT" Destination="WAIT_NEXT" Condition="!PE" x="1216.6666" y="2416.6665" />
+      <ECTransition Source="IDLE" Destination="WANT" Condition="REQ&#38;!PE" x="999.99994" y="983.3333" />
+      <ECTransition Source="WANT" Destination="RECEIVED" Condition="TokenGranted" x="1222.2222" y="1483.3333" />
+      <ECTransition Source="RECEIVED" Destination="DEPARTED_CURRENT" Condition="REQ&#38;PE" x="1222.2222" y="1938.8888" />
+      <ECTransition Source="DEPARTED_CURRENT" Destination="WAIT_NEXT" Condition="REQ&#38;!PE" x="1216.6666" y="2416.6665" />
       <ECTransition Source="RELEASE_TOKEN" Destination="IDLE" Condition="1" x="1394.4443" y="1038.8888" />
-      <ECTransition Source="RELEASE_AND_WANT" Destination="WANT" Condition="1" x="1511.1111" y="1550.0" />
-      <ECTransition Source="WAIT_NEXT" Destination="RELEASE_AND_WANT" Condition="PE_EXIT" x="2172.2222" y="1927.7777" />
-      <ECTransition Source="DEPARTED_CURRENT" Destination="RELEASE_TOKEN" Condition="PE_EXIT" x="2094.4443" y="1761.1111" />
+      <ECTransition Source="RELEASE_AND_WANT" Destination="WANT" Condition="1" x="1527.7777" y="1561.1111" />
+      <ECTransition Source="WAIT_NEXT" Destination="RELEASE_AND_WANT" Condition="REQ&#38;PE_EXIT" x="2261.111" y="1927.7777" />
+      <ECTransition Source="DEPARTED_CURRENT" Destination="RELEASE_TOKEN" Condition="REQ&#38;PE_EXIT" x="2144.4443" y="1755.5555" />
     </ECC>
   <Algorithm Name="INIT" Comment="Initialization algorithm" >
     <ST Text="MotoRotate := TRUE;&#10;Block := FALSE;&#10;&#10;System.out.println(this + &#34; &#34; + MotoRotate);&#10;System.out.println(MotoRotate);&#10;" />
@@ -117,7 +125,7 @@
     <ST Text="MotoRotate := FALSE;&#10;System.out.println(this + &#34; Stop &#34; + MotoRotate);&#10;&#10;System.out.println(&#34;Stop &#34; + MotoRotate);&#10;" />
   </Algorithm>
   <Algorithm Name="WANT_TEST" >
-    <Other Language="Java" Text="System.out.println(&#34;IN WANT&#34;);&#10;" />
+    <Other Language="Java" Text="System.out.println(&#34;IN WANTTTTTTTTTTTTTTTTTTTTTTTTTTT&#34;);&#10;" />
   </Algorithm>
   </BasicFB>
 </FBType>
