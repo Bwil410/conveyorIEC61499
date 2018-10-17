@@ -19,6 +19,7 @@
         <With Var="Candidate" />
         <With Var="PE" />
         <With Var="PE_EXIT" />
+        <With Var="Block" />
       </Event>
       <Event Name="START" >
         <With Var="Block" />
@@ -27,6 +28,8 @@
         <With Var="Block" />
       </Event>
       <Event Name="TOKEN_IN" >
+        <With Var="PE" />
+        <With Var="PE_EXIT" />
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -41,8 +44,14 @@
         <With Var="BlockCon" />
       </Event>
       <Event Name="RELEASE_TOKEN" >
+        <With Var="MotoRotate1" />
+        <With Var="MotoRotate2" />
+        <With Var="BlockCon" />
       </Event>
       <Event Name="REQUEST_TOKEN" >
+        <With Var="MotoRotate1" />
+        <With Var="MotoRotate2" />
+        <With Var="BlockCon" />
       </Event>
     </EventOutputs>
     <InputVars>
