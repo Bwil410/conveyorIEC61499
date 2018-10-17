@@ -100,25 +100,31 @@
       </ECState>
       <ECState Name="DEPARTED_CURRENT" x="1216.6666" y="2200.0" >
       </ECState>
-      <ECState Name="RELEASE" x="2733.3333" y="1038.8888" >
-        <ECAction Output="ReleaseToken" />
+      <ECState Name="RELEASE" x="3094.4443" y="1344.4443" >
       </ECState>
-      <ECState Name="RELEASE_AND_WANT" x="3649.9998" y="1672.2222" >
-        <ECAction Output="ReleaseToken" />
+      <ECState Name="RELEASE_AND_WANT" x="3244.4443" y="2483.3333" >
       </ECState>
       <ECState Name="DELAY_WANT" x="655.55554" y="1361.1111" >
+      </ECState>
+      <ECState Name="DELAY_RELEASE" x="2550.0" y="1005.55554" >
+        <ECAction Output="ReleaseToken" />
+      </ECState>
+      <ECState Name="DELAY_RELEASE_AND_WANT" x="1388.8888" y="2972.2222" >
+        <ECAction Output="ReleaseToken" />
       </ECState>
       <ECTransition Source="IDLE" Destination="INIT" Condition="INIT" x="1200.0" y="494.44443" />
       <ECTransition Source="INIT" Destination="IDLE" Condition="1" x="1344.4443" y="666.6666" />
       <ECTransition Source="WANT" Destination="RECEIVED" Condition="TokenGranted" x="1222.2222" y="1483.3333" />
       <ECTransition Source="RECEIVED" Destination="DEPARTED_CURRENT" Condition="REQ&#38;PE" x="1222.2222" y="1938.8888" />
       <ECTransition Source="DEPARTED_CURRENT" Destination="WAIT_NEXT" Condition="REQ&#38;!PE" x="1216.6666" y="2416.6665" />
-      <ECTransition Source="RELEASE" Destination="IDLE" Condition="1" x="1394.4443" y="1038.8888" />
-      <ECTransition Source="RELEASE_AND_WANT" Destination="WANT" Condition="1" x="2505.5554" y="1683.3333" />
-      <ECTransition Source="WAIT_NEXT" Destination="RELEASE_AND_WANT" Condition="REQ&#38;!PE_EXIT" x="3238.8887" y="2050.0" />
-      <ECTransition Source="DEPARTED_CURRENT" Destination="RELEASE" Condition="REQ&#38;!PE_EXIT" x="2566.6665" y="2016.6666" />
+      <ECTransition Source="WAIT_NEXT" Destination="RELEASE_AND_WANT" Condition="REQ&#38;!PE_EXIT" x="2388.889" y="2177.7776" />
+      <ECTransition Source="DEPARTED_CURRENT" Destination="RELEASE" Condition="REQ&#38;!PE_EXIT" x="2411.111" y="1933.3333" />
       <ECTransition Source="IDLE" Destination="DELAY_WANT" Condition="REQ&#38;!PE" x="838.88885" y="1183.3333" />
       <ECTransition Source="DELAY_WANT" Destination="WANT" Condition="1" x="1022.22217" y="1305.5555" />
+      <ECTransition Source="DELAY_RELEASE" Destination="IDLE" Condition="1" x="1405.5555" y="1005.55554" />
+      <ECTransition Source="RELEASE" Destination="DELAY_RELEASE" Condition="REQ&#38;PE_EXIT" x="2677.7776" y="1266.6666" />
+      <ECTransition Source="DELAY_RELEASE_AND_WANT" Destination="WANT" Condition="1" x="227.77777" y="2394.4443" />
+      <ECTransition Source="RELEASE_AND_WANT" Destination="DELAY_RELEASE_AND_WANT" Condition="REQ&#38;PE_EXIT" x="2016.6666" y="2805.5554" />
     </ECC>
   <Algorithm Name="INIT" Comment="Initialization algorithm" >
     <ST Text="MotoRotate := TRUE;&#10;Block := FALSE;&#10;&#10;System.out.println(this + &#34; &#34; + MotoRotate);&#10;System.out.println(MotoRotate);&#10;" />

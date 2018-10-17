@@ -208,11 +208,11 @@
           <Parameter Name="Candidate" Value="0" />
           <Parameter Name="Block" Value="0" />
         </FB>
-        <FB Name="FCThree" Type="TwoConCtlCentral" x="4605.555" y="161.1111" >
+        <FB Name="FCThree" Type="TwoConCtlCentral" x="4761.111" y="38.888885" >
           <Parameter Name="Candidate" Value="0" />
           <Parameter Name="Block" Value="0" />
         </FB>
-        <FB Name="Server" Type="CentralServer" x="3455.5554" y="705.55554" />
+        <FB Name="Server" Type="CentralServer" x="3488.8887" y="433.3333" />
         <EventConnections>
           <Connection Source="START.COLD" Destination="BagInOne.INIT" dx1="27.777777" dx2="20.0" dy="-60.0" />
           <Connection Source="BagInThree.IND" Destination="BagIn3.REQ" dx1="61.111107" />
@@ -239,19 +239,25 @@
           <Connection Source="FCTwo.CNF" Destination="ConControl.REQ" dx1="2077.7776" />
           <Connection Source="FCTwo.INITO" Destination="FCFour.INIT" dx1="194.44444" />
           <Connection Source="TCOne.INITO" Destination="FCTwo.INIT" dx1="27.777777" dx2="261.1111" dy="-2322.2222" />
-          <Connection Source="BagIn1.CNF" Destination="FCOne.REQ" dx1="461.11108" />
           <Connection Source="TCOne.START" Destination="FCOne.START" dx1="161.1111" dx2="77.77777" dy="-2550.0" />
           <Connection Source="TCOne.STOP" Destination="FCOne.STOP" dx1="327.77777" dx2="138.88889" dy="-2666.6665" />
           <Connection Source="FCOne.CNF" Destination="ConControl.REQ" dx1="999.99994" />
           <Connection Source="FCFour.INITO" Destination="FCOne.INIT" dx1="27.777777" />
           <Connection Source="FCOne.INITO" Destination="FCThree.INIT" dx1="61.111107" />
-          <Connection Source="BagIn3.CNF" Destination="FCThree.REQ" dx1="1166.6666" />
           <Connection Source="TCOne.START" Destination="FCThree.START" dx1="27.777777" dx2="300.0" dy="-2550.0" />
           <Connection Source="TCOne.STOP" Destination="FCThree.STOP" dx1="27.777777" dx2="172.22221" dy="-2666.6665" />
           <Connection Source="FCThree.CNF" Destination="ConControl.REQ" dx1="427.77777" />
           <Connection Source="TCOne.TokenUpdate" Destination="FCTwo.TokenUpdateIN" dx1="27.777777" dx2="144.44444" dy="-2888.8887" />
           <Connection Source="FCTwo.TokenUpdate" Destination="TCOne.TokenUpdateIN" dx1="661.1111" />
           <Connection Source="PE.IND" Destination="FCTwo.REQ" dx1="122.22221" />
+          <Connection Source="Server.Grant1" Destination="FCOne.TOKEN_IN" dx1="27.777777" dx2="700.0" dy="-611.1111" />
+          <Connection Source="Server.Grant2" Destination="FCThree.TOKEN_IN" dx1="155.55554" />
+          <Connection Source="FCOne.REQUEST_TOKEN" Destination="Server.Request1" dx1="177.77777" />
+          <Connection Source="FCOne.RELEASE_TOKEN" Destination="Server.Release1" dx1="100.0" />
+          <Connection Source="PE.IND" Destination="FCOne.REQ" dx1="333.3333" />
+          <Connection Source="PE.IND" Destination="FCThree.REQ" dx1="1444.4443" />
+          <Connection Source="FCThree.RELEASE_TOKEN" Destination="Server.Release2" dx1="244.44443" dx2="238.88889" dy="-444.44443" />
+          <Connection Source="FCThree.REQUEST_TOKEN" Destination="Server.Request2" dx1="516.6666" dx2="527.7778" dy="-561.1111" />
         </EventConnections>
         <DataConnections>
           <Connection Source="TCOne.MotoRotate1" Destination="ConControl.SD_3" dx1="822.22217" />
@@ -279,6 +285,10 @@
           <Connection Source="PE.RD_8" Destination="FCTwo.PE13" dx1="100.0" />
           <Connection Source="TCOne.Token" Destination="FCTwo.TokenIN" dx1="27.777777" dx2="116.666664" dy="283.3333" />
           <Connection Source="FCTwo.Token" Destination="TCOne.TokenIN" dx1="1055.5555" />
+          <Connection Source="PE.RD_5" Destination="FCOne.PE_EXIT" dx1="433.3333" />
+          <Connection Source="PE.RD_5" Destination="FCThree.PE_EXIT" dx1="1877.7777" />
+          <Connection Source="PE.RD_1" Destination="FCOne.PE" dx1="377.77777" />
+          <Connection Source="PE.RD_3" Destination="FCThree.PE" dx1="1755.5555" />
         </DataConnections>
       </FBNetwork>
     </Resource>
