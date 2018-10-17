@@ -9,48 +9,44 @@
   </CompilerInfo>
   <InterfaceList>
     <EventInputs>
-      <Event Name="INIT" Comment="Initialization Request" >
-        <With Var="QI" />
+      <Event Name="Request1" >
       </Event>
-      <Event Name="REQ" Comment="Normal Execution Request" >
-        <With Var="QI" />
+      <Event Name="Request2" >
+      </Event>
+      <Event Name="Release1" >
+      </Event>
+      <Event Name="Release2" >
       </Event>
     </EventInputs>
     <EventOutputs>
-      <Event Name="INITO" Comment="Initialization Confirm" >
-        <With Var="QO" />
+      <Event Name="Grant1" >
       </Event>
-      <Event Name="CNF" Comment="Execution Confirmation" >
-        <With Var="QO" />
+      <Event Name="Grant2" >
       </Event>
     </EventOutputs>
-    <InputVars>
-      <VarDeclaration Name="QI" Type="BOOL" Comment="Input event qualifier" />
-    </InputVars>
-    <OutputVars>
-      <VarDeclaration Name="QO" Type="BOOL" Comment="Output event qualifier" />
-    </OutputVars>
   </InterfaceList>
   <BasicFB>
     <ECC >
-      <ECState Name="START" Comment="Initial State" x="552.9412" y="429.4117" >
+      <ECState Name="NOREQUEST" Comment="Initial State" x="1844.4443" y="655.55554" >
       </ECState>
-      <ECState Name="INIT" Comment="Initialization" x="923.5294" y="141.1765" >
-        <ECAction Algorithm="INIT" Output="INITO" />
+      <ECState Name="Requested1" x="616.6666" y="683.3333" >
+        <ECAction Output="Grant1" />
       </ECState>
-      <ECState Name="REQ" Comment="Normal execution" x="217.647" y="752.9412" >
-        <ECAction Algorithm="REQ" Output="CNF" />
+      <ECState Name="Requested2" x="3044.4443" y="622.22217" >
+        <ECAction Output="Grant2" />
       </ECState>
-      <ECTransition Source="START" Destination="INIT" Condition="INIT" x="923.5294" y="429.4117" />
-      <ECTransition Source="INIT" Destination="START" Condition="1" x="552.9412" y="141.1765" />
-      <ECTransition Source="START" Destination="REQ" Condition="REQ" x="552.9412" y="600.0" />
-      <ECTransition Source="REQ" Destination="START" Condition="1" x="217.647" y="429.4117" />
+      <ECState Name="Awaiting1Release" x="1844.4443" y="1388.8888" >
+      </ECState>
+      <ECState Name="Awaiting2Release" x="1833.3333" y="127.77777" >
+      </ECState>
+      <ECTransition Source="NOREQUEST" Destination="Requested2" Condition="Request2" x="2372.2222" y="350.0" />
+      <ECTransition Source="NOREQUEST" Destination="Requested1" Condition="Request1" x="1166.6666" y="400.0" />
+      <ECTransition Source="Requested2" Destination="NOREQUEST" Condition="Release2" x="2416.6665" y="1044.4445" />
+      <ECTransition Source="Requested1" Destination="NOREQUEST" Condition="Release1" x="1155.5555" y="1083.3333" />
+      <ECTransition Source="Requested1" Destination="Awaiting1Release" Condition="Request2" x="616.6666" y="1388.8888" />
+      <ECTransition Source="Awaiting1Release" Destination="Requested2" Condition="Release1" x="3044.4443" y="1388.8888" />
+      <ECTransition Source="Requested2" Destination="Awaiting2Release" Condition="Request1" x="3044.4443" y="127.77777" />
+      <ECTransition Source="Awaiting2Release" Destination="Requested1" Condition="Release2" x="616.6666" y="127.77777" />
     </ECC>
-  <Algorithm Name="INIT" Comment="Initialization algorithm" >
-    <ST Text="" />
-  </Algorithm>
-  <Algorithm Name="REQ" Comment="Normally executed algorithm" >
-    <ST Text="" />
-  </Algorithm>
   </BasicFB>
 </FBType>
