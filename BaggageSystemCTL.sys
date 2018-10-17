@@ -71,7 +71,7 @@
           <Connection Source="ThreeCon.CNF" Destination="PE.REQ" dx1="144.44444" dx2="138.88889" dy="-788.88885" />
           <Connection Source="PE.INITO" Destination="View.INIT" dx1="127.77777" />
           <Connection Source="PE.CNF" Destination="View.REQ" dx1="361.11108" />
-          <Connection Source="View.INITO" Destination="Clock.START" dx1="27.777777" />
+          <Connection Source="View.INITO" Destination="Clock.START" dx1="27.777777" dx2="0.0" dy="-1261.1111" />
           <Connection Source="TwoCon1.BagOut" Destination="ThreeCon.BagMerge1" dx1="233.33333" />
           <Connection Source="TwoCon3.BagOut" Destination="ThreeCon.BagMerge3" dx1="249.99998" />
           <Connection Source="TwoCon2.BagOut" Destination="ThreeCon.BagMerge2" dx1="166.66666" />
@@ -183,7 +183,7 @@
         <FB Name="BagIn1" Type="PUBL_0" x="1055.5555" y="16.666666" />
         <FB Name="BagIn3" Type="PUBL_0" x="638.88885" y="1783.3333" />
         <FB Name="BagIn2" Type="PUBL_0" x="661.1111" y="888.88885" />
-        <FB Name="TCOne" Type="ThreeConCtl" x="5105.555" y="2283.3333" >
+        <FB Name="TCOne" Type="ThreeConCtl" x="5266.6665" y="2155.5554" >
           <Parameter Name="Candidate" Value="1" />
         </FB>
         <FB Name="ConControl" Type="PUBL_11" x="7294.4443" y="144.44444" >
@@ -201,7 +201,7 @@
           <Parameter Name="Candidate" Value="0" />
           <Parameter Name="Block" Value="0" />
         </FB>
-        <FB Name="FCTwo" Type="TwoConCtlRing" x="2222.2222" y="2227.7776" >
+        <FB Name="FCTwo" Type="TwoConCtlRing" x="2227.7776" y="1766.6666" >
           <Parameter Name="Candidate" Value="1" />
         </FB>
         <FB Name="FCOne" Type="TwoConCtlCentral" x="2244.4443" y="533.3333" >
@@ -255,7 +255,7 @@
           <Connection Source="PE.IND" Destination="FCTwo.REQ" dx1="255.55554" />
         </EventConnections>
         <DataConnections>
-          <Connection Source="TCOne.MotoRotate1" Destination="ConControl.SD_3" dx1="994.4444" />
+          <Connection Source="TCOne.MotoRotate1" Destination="ConControl.SD_3" dx1="822.22217" />
           <Connection Source="TCOne.MotoRotate2" Destination="ConControl.SD_4" dx1="1027.7777" />
           <Connection Source="TCOne.MotoRotate3" Destination="ConControl.SD_5" dx1="1061.1111" />
           <Connection Source="FCFour.MotoRotate1" Destination="ConControl.SD_10" dx1="1361.1111" dx2="53.333332" dy="586.6666" />
@@ -266,11 +266,11 @@
           <Connection Source="TCOne.MultiIDOut" Destination="FCFour.MultiIDIn" dx1="211.1111" dx2="188.88889" dy="283.3333" />
           <Connection Source="TCOne.MultiTimeOut" Destination="FCFour.MultiTimeIn" dx1="177.77777" dx2="277.77777" dy="522.2222" />
           <Connection Source="PE.RD_4" Destination="FCFour.PE" dx1="588.88885" />
-          <Connection Source="PE.RD_6" Destination="TCOne.PE2" dx1="966.6666" />
-          <Connection Source="TCOne.BlockCon" Destination="FCTwo.Block" dx1="27.777777" dx2="155.55554" dy="305.55554" />
+          <Connection Source="PE.RD_6" Destination="TCOne.PE2" dx1="477.77777" />
+          <Connection Source="TCOne.BlockCon" Destination="FCTwo.Block" dx1="794.4444" dx2="155.55554" dy="822.22217" />
           <Connection Source="FCTwo.BlockCon" Destination="TCOne.Block" dx1="394.44443" />
-          <Connection Source="FCTwo.MotoRotate1" Destination="ConControl.SD_8" dx1="2494.4443" />
-          <Connection Source="FCTwo.MotoRotate2" Destination="ConControl.SD_9" dx1="2577.7776" />
+          <Connection Source="FCTwo.MotoRotate1" Destination="ConControl.SD_8" dx1="1994.4443" />
+          <Connection Source="FCTwo.MotoRotate2" Destination="ConControl.SD_9" dx1="2111.111" />
           <Connection Source="PE.RD_2" Destination="FCTwo.PE" dx1="244.44443" />
           <Connection Source="FCOne.MotoRotate1" Destination="ConControl.SD_6" dx1="1455.5555" />
           <Connection Source="FCOne.MotoRotate2" Destination="ConControl.SD_7" dx1="1544.4443" />
