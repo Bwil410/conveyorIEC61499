@@ -13,10 +13,12 @@
         <With Var="Candidate" />
         <With Var="Block" />
         <With Var="PE" />
+        <With Var="PE13" />
       </Event>
       <Event Name="REQ" Comment="Normal Execution Request" >
         <With Var="Candidate" />
         <With Var="PE" />
+        <With Var="PE13" />
       </Event>
       <Event Name="START" >
         <With Var="Block" />
@@ -25,6 +27,11 @@
         <With Var="Block" />
       </Event>
       <Event Name="TokenUpdateIN" >
+        <With Var="TokenIN" />
+        <With Var="PE" />
+        <With Var="Block" />
+        <With Var="Candidate" />
+        <With Var="PE13" />
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -39,6 +46,7 @@
         <With Var="BlockCon" />
       </Event>
       <Event Name="TokenUpdate" >
+        <With Var="Token" />
       </Event>
     </EventOutputs>
     <InputVars>
