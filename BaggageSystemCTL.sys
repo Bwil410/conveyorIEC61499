@@ -207,13 +207,12 @@
         <FB Name="FCOne" Type="TwoConCtlCentral" x="2377.7776" y="688.88885" >
           <Parameter Name="Candidate" Value="0" />
           <Parameter Name="Block" Value="0" />
-          <Parameter Name="PE" Value="0" />
         </FB>
-        <FB Name="FCThree" Type="TwoConCtlCentral" x="3188.8887" y="150.0" >
+        <FB Name="FCThree" Type="TwoConCtlCentral" x="4605.555" y="161.1111" >
           <Parameter Name="Candidate" Value="0" />
           <Parameter Name="Block" Value="0" />
-          <Parameter Name="PE" Value="0" />
         </FB>
+        <FB Name="Server" Type="CentralServer" x="3455.5554" y="705.55554" />
         <EventConnections>
           <Connection Source="START.COLD" Destination="BagInOne.INIT" dx1="27.777777" dx2="20.0" dy="-60.0" />
           <Connection Source="BagInThree.IND" Destination="BagIn3.REQ" dx1="61.111107" />

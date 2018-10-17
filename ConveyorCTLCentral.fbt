@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd" >
-<FBType Name="ConveyorCTL" Comment="Basic Function Block Type" >
+<FBType Name="ConveyorCTLCentral" Comment="Basic Function Block Type" >
   <Identification Standard="61499-2" />
   <VersionInfo Organization="Rockwell Automation" Version="0.2" Author="JHC" Date="2003-12-04" Remarks="Renamed for better indexing." />
   <VersionInfo Organization="Rockwell Automation" Version="0.1" Author="JHC" Date="2002-11-05" Remarks="Corrected missing ST element in Algorithm REQ." />
@@ -13,15 +13,23 @@
         <With Var="PE" />
         <With Var="Block" />
         <With Var="Candidate" />
+        <With Var="PE_EXIT" />
       </Event>
       <Event Name="REQ" Comment="Normal Execution Request" >
         <With Var="PE" />
         <With Var="Block" />
         <With Var="Candidate" />
+        <With Var="PE_EXIT" />
       </Event>
       <Event Name="CAS_STOP" >
       </Event>
       <Event Name="CAS_START" >
+      </Event>
+      <Event Name="TokenGranted" >
+        <With Var="PE" />
+        <With Var="Block" />
+        <With Var="PE_EXIT" />
+        <With Var="Candidate" />
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -34,14 +42,27 @@
         <With Var="BlockCon" />
       </Event>
       <Event Name="STOP" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
       </Event>
       <Event Name="START" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
+      </Event>
+      <Event Name="RequestToken" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
+      </Event>
+      <Event Name="ReleaseToken" >
+        <With Var="MotoRotate" />
+        <With Var="BlockCon" />
       </Event>
     </EventOutputs>
     <InputVars>
       <VarDeclaration Name="PE" Type="BOOL" Comment="Input event qualifier" />
       <VarDeclaration Name="Block" Type="BOOL" />
       <VarDeclaration Name="Candidate" Type="BOOL" />
+      <VarDeclaration Name="PE_EXIT" Type="BOOL" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="MotoRotate" Type="BOOL" Comment="Output event qualifier" />
@@ -54,31 +75,50 @@
       <VarDeclaration Name="lastBlock" Type="BOOL" InitialValue="0" />
     </InternalVars>
     <ECC >
-      <ECState Name="START" Comment="Initial State" x="555.55554" y="427.77777" >
-      </ECState>
-      <ECState Name="INIT" Comment="Initialization" x="922.22217" y="138.88889" >
-        <ECAction Algorithm="INIT" Output="INITO" />
-        <ECAction Output="CNF" />
-      </ECState>
-      <ECState Name="REQ" Comment="Normal execution" x="222.22221" y="972.22217" >
-        <ECAction Algorithm="REQ" Output="CNF" />
-      </ECState>
-      <ECState Name="CAS_START" x="1300.0" y="1294.4443" >
+      <ECState Name="IDLE" Comment="Initial State" x="1200.0" y="838.88885" >
         <ECAction Algorithm="START" Output="START" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="CAS_STOP" x="1538.8888" y="700.0" >
+      <ECState Name="INIT" Comment="Initialization" x="1433.3333" y="494.44443" >
+        <ECAction Algorithm="INIT" Output="INITO" />
+        <ECAction Output="CNF" />
+      </ECState>
+      <ECState Name="WANT" x="1211.1111" y="1283.3333" >
+        <ECAction Algorithm="STOP" Output="STOP" />
+        <ECAction Output="CNF" />
+        <ECAction Output="RequestToken" />
+        <ECAction Algorithm="WANT_TEST" />
+      </ECState>
+      <ECState Name="RECEIVED" x="1216.6666" y="1716.6666" >
+        <ECAction Algorithm="START" Output="START" />
+        <ECAction Output="CNF" />
+        <ECAction Algorithm="RECEIVED_TEST" />
+      </ECState>
+      <ECState Name="WAIT_NEXT" x="1216.6666" y="2661.111" >
         <ECAction Algorithm="STOP" Output="STOP" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECTransition Source="START" Destination="INIT" Condition="INIT" x="922.22217" y="427.77777" />
-      <ECTransition Source="INIT" Destination="START" Condition="1" x="555.55554" y="138.88889" />
-      <ECTransition Source="START" Destination="REQ" Condition="REQ&#38;Candidate" x="555.55554" y="716.6666" />
-      <ECTransition Source="REQ" Destination="START" Condition="1" x="222.22221" y="644.4444" />
-      <ECTransition Source="START" Destination="CAS_START" Condition="CAS_START" x="966.6666" y="1066.6666" />
-      <ECTransition Source="CAS_START" Destination="START" Condition="1" x="1216.6666" y="1005.55554" />
-      <ECTransition Source="START" Destination="CAS_STOP" Condition="CAS_STOP" x="1111.1111" y="700.0" />
-      <ECTransition Source="CAS_STOP" Destination="START" Condition="1" x="1405.5555" y="583.3333" />
+      <ECState Name="DEPARTED_CURRENT" x="1216.6666" y="2200.0" >
+      </ECState>
+      <ECState Name="RELEASE" x="2733.3333" y="1038.8888" >
+        <ECAction Output="ReleaseToken" />
+      </ECState>
+      <ECState Name="RELEASE_AND_WANT" x="3649.9998" y="1672.2222" >
+        <ECAction Output="ReleaseToken" />
+      </ECState>
+      <ECState Name="DELAY_WANT" x="655.55554" y="1361.1111" >
+      </ECState>
+      <ECTransition Source="IDLE" Destination="INIT" Condition="INIT" x="1200.0" y="494.44443" />
+      <ECTransition Source="INIT" Destination="IDLE" Condition="1" x="1344.4443" y="666.6666" />
+      <ECTransition Source="WANT" Destination="RECEIVED" Condition="TokenGranted" x="1222.2222" y="1483.3333" />
+      <ECTransition Source="RECEIVED" Destination="DEPARTED_CURRENT" Condition="REQ&#38;PE" x="1222.2222" y="1938.8888" />
+      <ECTransition Source="DEPARTED_CURRENT" Destination="WAIT_NEXT" Condition="REQ&#38;!PE" x="1216.6666" y="2416.6665" />
+      <ECTransition Source="RELEASE" Destination="IDLE" Condition="1" x="1394.4443" y="1038.8888" />
+      <ECTransition Source="RELEASE_AND_WANT" Destination="WANT" Condition="1" x="2505.5554" y="1683.3333" />
+      <ECTransition Source="WAIT_NEXT" Destination="RELEASE_AND_WANT" Condition="REQ&#38;!PE_EXIT" x="3238.8887" y="2050.0" />
+      <ECTransition Source="DEPARTED_CURRENT" Destination="RELEASE" Condition="REQ&#38;!PE_EXIT" x="2566.6665" y="2016.6666" />
+      <ECTransition Source="IDLE" Destination="DELAY_WANT" Condition="REQ&#38;!PE" x="838.88885" y="1183.3333" />
+      <ECTransition Source="DELAY_WANT" Destination="WANT" Condition="1" x="1022.22217" y="1305.5555" />
     </ECC>
   <Algorithm Name="INIT" Comment="Initialization algorithm" >
     <ST Text="MotoRotate := TRUE;&#10;Block := FALSE;&#10;&#10;System.out.println(this + &#34; &#34; + MotoRotate);&#10;System.out.println(MotoRotate);&#10;" />
@@ -91,6 +131,12 @@
   </Algorithm>
   <Algorithm Name="STOP" >
     <ST Text="MotoRotate := FALSE;&#10;System.out.println(this + &#34; Stop &#34; + MotoRotate);&#10;&#10;System.out.println(&#34;Stop &#34; + MotoRotate);&#10;" />
+  </Algorithm>
+  <Algorithm Name="WANT_TEST" >
+    <Other Language="Java" Text="System.out.println(&#34;IN WANTTTTTTTTTTTTTTTTTTTTTTTTTTT&#34;);&#10;" />
+  </Algorithm>
+  <Algorithm Name="RECEIVED_TEST" >
+    <Other Language="Java" Text="System.out.println(&#34;RECEIVEDDDDD&#34;);&#10;" />
   </Algorithm>
   </BasicFB>
 </FBType>
