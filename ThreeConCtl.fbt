@@ -15,6 +15,7 @@
         <With Var="PE" />
         <With Var="PE2" />
         <With Var="PE13" />
+        <With Var="PE14" />
       </Event>
       <Event Name="REQ" Comment="Normal Execution Request" >
         <With Var="Block" />
@@ -22,6 +23,7 @@
         <With Var="PE" />
         <With Var="PE2" />
         <With Var="PE13" />
+        <With Var="PE14" />
       </Event>
       <Event Name="MultiIn" >
         <With Var="Candidate" />
@@ -31,6 +33,7 @@
         <With Var="MultiTimeIn" />
         <With Var="PE2" />
         <With Var="PE13" />
+        <With Var="PE14" />
       </Event>
       <Event Name="TokenUpdateIN" >
         <With Var="TokenIN" />
@@ -38,6 +41,7 @@
         <With Var="Candidate" />
         <With Var="Block" />
         <With Var="PE2" />
+        <With Var="PE14" />
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -76,6 +80,7 @@
       <VarDeclaration Name="PE2" Type="BOOL" />
       <VarDeclaration Name="TokenIN" Type="BOOL" />
       <VarDeclaration Name="PE13" Type="BOOL" />
+      <VarDeclaration Name="PE14" Type="BOOL" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="MotoRotate1" Type="BOOL" />
@@ -132,6 +137,7 @@
       <Connection Source="FC11.Token" Destination="Token" dx1="1277.7777" />
       <Connection Source="PE13" Destination="FC11.PE13" dx1="227.77777" />
       <Connection Source="TokenIN" Destination="FC11.TokenIN" dx1="188.88889" />
+      <Connection Source="PE14" Destination="FC12New.PE14" dx1="1544.4443" />
     </DataConnections>
   </FBNetwork>
 </FBType>

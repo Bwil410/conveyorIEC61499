@@ -13,11 +13,13 @@
         <With Var="PE" />
         <With Var="Block" />
         <With Var="Candidate" />
+        <With Var="PE14" />
       </Event>
       <Event Name="REQ" Comment="Normal Execution Request" >
         <With Var="PE" />
         <With Var="Block" />
         <With Var="Candidate" />
+        <With Var="PE14" />
       </Event>
       <Event Name="CAS_STOP" >
       </Event>
@@ -29,6 +31,7 @@
         <With Var="Candidate" />
         <With Var="MultiIDIn" />
         <With Var="MultiTimeIn" />
+        <With Var="PE14" />
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -57,6 +60,7 @@
       <VarDeclaration Name="Candidate" Type="BOOL" />
       <VarDeclaration Name="MultiIDIn" Type="INT" />
       <VarDeclaration Name="MultiTimeIn" Type="INT" />
+      <VarDeclaration Name="PE14" Type="BOOL" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="MotoRotate" Type="BOOL" Comment="Output event qualifier" />
@@ -114,13 +118,13 @@
       <ECTransition Source="INIT" Destination="START" Condition="1" x="3233.3333" y="666.6666" />
       <ECTransition Source="START" Destination="WANTED" Condition="REQ&#38;!PE" x="3566.6665" y="1444.4443" />
       <ECTransition Source="WANTED" Destination="HELD" Condition="MultiIn&#38;MultiIDIn=100" x="3566.6665" y="2283.3333" />
-      <ECTransition Source="HELD" Destination="START" Condition="REQ&#38;PE" x="2916.6665" y="1922.2222" />
+      <ECTransition Source="HELD" Destination="START" Condition="REQ&#38;!PE14&#38;PE" x="2916.6665" y="1922.2222" />
       <ECTransition Source="START" Destination="SEND" Condition="MultiIn&#38;MultiIDIn&#60;100" x="4255.555" y="655.55554" />
       <ECTransition Source="SEND" Destination="START" Condition="1" x="3855.5554" y="1250.0" />
       <ECTransition Source="WANTED" Destination="COMPARE" Condition="MultiIn&#38;MultiIDIn&#60;100" x="4011.1108" y="1383.3333" />
       <ECTransition Source="SEND2" Destination="WANTED" Condition="1" x="4038.8887" y="2166.6665" />
       <ECTransition Source="SEND3" Destination="START" Condition="1" x="2588.8887" y="1888.8888" />
-      <ECTransition Source="HELD2" Destination="SEND3" Condition="REQ&#38;PE" x="4522.222" y="3316.6665" />
+      <ECTransition Source="HELD2" Destination="SEND3" Condition="REQ&#38;!PE14&#38;PE" x="4522.222" y="3316.6665" />
       <ECTransition Source="WANTED2" Destination="HELD2" Condition="MultiIn&#38;MultiIDIn=100" x="6427.7773" y="2144.4443" />
       <ECTransition Source="COMPARE" Destination="WANTED2" Condition="compareVal" x="6427.7773" y="1572.2222" />
       <ECTransition Source="COMPARE" Destination="SEND2" Condition="!compareVal" x="5294.4443" y="1566.6666" />

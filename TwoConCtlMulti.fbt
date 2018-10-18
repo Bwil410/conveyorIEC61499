@@ -13,10 +13,12 @@
         <With Var="Candidate" />
         <With Var="Block" />
         <With Var="PE" />
+        <With Var="PE14" />
       </Event>
       <Event Name="REQ" Comment="Normal Execution Request" >
         <With Var="Candidate" />
         <With Var="PE" />
+        <With Var="PE14" />
       </Event>
       <Event Name="START" >
         <With Var="Block" />
@@ -30,6 +32,7 @@
         <With Var="PE" />
         <With Var="MultiIDIn" />
         <With Var="MultiTimeIn" />
+        <With Var="PE14" />
       </Event>
     </EventInputs>
     <EventOutputs>
@@ -57,6 +60,7 @@
       <VarDeclaration Name="PE" Type="BOOL" />
       <VarDeclaration Name="MultiIDIn" Type="INT" />
       <VarDeclaration Name="MultiTimeIn" Type="INT" />
+      <VarDeclaration Name="PE14" Type="BOOL" />
     </InputVars>
     <OutputVars>
       <VarDeclaration Name="MotoRotate1" Type="BOOL" />
@@ -106,6 +110,7 @@
       <Connection Source="FC12.MultiIDOut" Destination="MultiIDOut" dx1="2727.7776" />
       <Connection Source="FC12.MultiTimeOut" Destination="MultiTimeOut" dx1="2772.2222" />
       <Connection Source="PE" Destination="FC12.PE" dx1="1799.9999" />
+      <Connection Source="PE14" Destination="FC12.PE14" dx1="1766.6666" />
     </DataConnections>
   </FBNetwork>
 </FBType>
