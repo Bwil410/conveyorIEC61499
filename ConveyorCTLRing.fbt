@@ -93,21 +93,24 @@
         <ECAction Algorithm="START" Output="START" />
         <ECAction Output="CNF" />
       </ECState>
-      <ECState Name="CS_FROZEN" x="3927.7776" y="2938.8887" >
+      <ECState Name="CS_FROZEN" x="5300.0" y="2938.8887" >
         <ECAction Algorithm="STOP" Output="STOP" />
         <ECAction Output="CNF" />
         <ECAction Algorithm="TESTFREEZE" />
       </ECState>
+      <ECState Name="CS_DEPARTED" x="3911.1108" y="2927.7776" >
+      </ECState>
       <ECTransition Source="NO_TOKEN" Destination="INIT" Condition="INIT" x="2088.889" y="622.22217" />
       <ECTransition Source="INIT" Destination="NO_TOKEN" Condition="1" x="2088.889" y="249.99998" />
       <ECTransition Source="NO_TOKEN" Destination="WANT" Condition="REQ&#38;!PE" x="1772.2222" y="1383.3333" />
-      <ECTransition Source="CS" Destination="CS_FROZEN" Condition="REQ&#38;!PE" x="3711.111" y="2705.5554" />
-      <ECTransition Source="CS_FROZEN" Destination="CS" Condition="REQ&#38;PE13" x="4083.3333" y="2727.7776" />
-      <ECTransition Source="CS" Destination="NO_TOKEN" Condition="REQ&#38;PE" x="6966.6665" y="1988.8888" />
       <ECTransition Source="TOKEN" Destination="NO_TOKEN" Condition="REQ&#38;PE" x="4177.778" y="1111.1111" />
       <ECTransition Source="NO_TOKEN" Destination="TOKEN" Condition="TokenUpdateIN&#38;TokenIN" x="3449.9998" y="1116.6666" />
       <ECTransition Source="TOKEN" Destination="CS" Condition="REQ&#38;!PE" x="1788.8888" y="2183.3333" />
-      <ECTransition Source="WANT" Destination="CS" Condition="TokenUpdateIN&#38;TokenIN" x="3916.6665" y="2227.7776" />
+      <ECTransition Source="WANT" Destination="CS" Condition="TokenUpdateIN&#38;TokenIN" x="3677.7776" y="2205.5554" />
+      <ECTransition Source="CS" Destination="CS_DEPARTED" Condition="REQ&#38;PE" x="3911.1108" y="2688.8887" />
+      <ECTransition Source="CS_DEPARTED" Destination="NO_TOKEN" Condition="REQ&#38;!PE13" x="5427.7773" y="2072.2222" />
+      <ECTransition Source="CS_DEPARTED" Destination="CS_FROZEN" Condition="REQ&#38;!PE" x="4572.222" y="2938.8887" />
+      <ECTransition Source="CS_FROZEN" Destination="NO_TOKEN" Condition="REQ&#38;!PE13" x="5972.222" y="2116.6665" />
     </ECC>
   <Algorithm Name="INIT" Comment="Initialization algorithm" >
     <ST Text="MotoRotate := TRUE;&#10;Block := FALSE;&#10;&#10;System.out.println(this + &#34; &#34; + MotoRotate);&#10;System.out.println(MotoRotate);&#10;" />
