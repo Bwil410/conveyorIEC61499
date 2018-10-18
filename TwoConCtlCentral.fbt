@@ -73,6 +73,12 @@
       <Parameter Name="Block" Value="0" />
       <Parameter Name="Candidate" Value="0" />
     </FB>
+    <FB Name="CENTRAL_START_DELAY" Type="E_DELAY" x="3772.2222" y="1527.7777" >
+      <Parameter Name="DT" Value="t#1000ms" />
+    </FB>
+    <FB Name="CENTRAL_STOP_DELAY" Type="E_DELAY" x="3755.5554" y="772.22217" >
+      <Parameter Name="DT" Value="t#1000ms" />
+    </FB>
     <EventConnections>
       <Connection Source="START" Destination="FC12.CAS_START" dx1="1844.4443" />
       <Connection Source="STOP" Destination="FC12.CAS_STOP" dx1="1861.1111" />
@@ -80,14 +86,16 @@
       <Connection Source="FC11.INITO" Destination="FC12.INIT" dx1="111.11111" />
       <Connection Source="FC12.INITO" Destination="INITO" dx1="2905.5554" />
       <Connection Source="FC12.CNF" Destination="CNF" dx1="2883.3333" />
-      <Connection Source="FC12.STOP" Destination="FC11.CAS_STOP" dx1="138.88889" dx2="138.88889" dy="-583.3333" />
-      <Connection Source="FC12.START" Destination="FC11.CAS_START" dx1="183.33333" dx2="183.33333" dy="-777.7778" />
       <Connection Source="INIT" Destination="FC11.INIT" dx1="494.44443" />
       <Connection Source="REQ" Destination="FC11.REQ" dx1="488.88885" />
       <Connection Source="FC12.RequestToken" Destination="RELEASE_TOKEN" dx1="3072.2222" />
       <Connection Source="FC12.RequestToken" Destination="REQUEST_TOKEN" dx1="3077.7776" />
       <Connection Source="FC12.ReleaseToken" Destination="RELEASE_TOKEN" dx1="3072.2222" />
       <Connection Source="TOKEN_IN" Destination="FC12.TokenGranted" dx1="1794.4443" />
+      <Connection Source="FC12.START" Destination="CENTRAL_START_DELAY.START" dx1="627.7778" />
+      <Connection Source="CENTRAL_START_DELAY.EO" Destination="FC11.CAS_START" dx1="27.777777" dx2="194.44444" dy="-1283.3333" />
+      <Connection Source="FC12.STOP" Destination="CENTRAL_STOP_DELAY.START" dx1="300.0" />
+      <Connection Source="CENTRAL_STOP_DELAY.EO" Destination="FC11.CAS_STOP" dx1="27.777777" dx2="88.888885" dy="-166.66666" />
     </EventConnections>
     <DataConnections>
       <Connection Source="FC11.MotoRotate" Destination="MotoRotate1" dx1="1400.0" />
